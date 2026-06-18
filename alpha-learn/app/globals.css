@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent:       #6EE7B7;   /* emerald-300 — primary interactive */
+    --accent-dim:   #34D399;   /* emerald-400 */
+    --surface:      #0F172A;   /* slate-900 */
+    --surface-2:    #1E293B;   /* slate-800 */
+    --surface-3:    #334155;   /* slate-700 */
+    --border:       #1E293B;
+    --text-primary: #F1F5F9;   /* slate-100 */
+    --text-muted:   #94A3B8;   /* slate-400 */
+  }
+
+  * {
+    @apply border-slate-800;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-slate-900; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-700 rounded-full; }
+
+  /* Focus visible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-950;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 
+           text-slate-900 font-semibold text-sm transition-colors
+           hover:bg-emerald-400 active:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg
+           text-slate-300 font-medium text-sm transition-colors
+           hover:bg-slate-800 hover:text-slate-100 active:bg-slate-700;
+  }
+
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-xl p-5;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700
+           text-slate-100 placeholder:text-slate-500 text-sm
+           focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent
+           transition-colors;
+  }
+
+  /* Mastery bar */
+  .mastery-bar {
+    @apply h-1.5 rounded-full bg-slate-800 overflow-hidden;
+  }
+  .mastery-fill {
+    @apply h-full rounded-full transition-all duration-500;
+    background: linear-gradient(90deg, #34D399, #6EE7B7);
+  }
+
+  /* XP pill */
+  .xp-pill {
+    @apply badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30;
+  }
+
+  /* Difficulty chip */
+  .chip-easy   { @apply badge bg-emerald-500/20 text-emerald-300; }
+  .chip-medium { @apply badge bg-amber-500/20   text-amber-300;   }
+  .chip-hard   { @apply badge bg-red-500/20     text-red-300;     }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent;
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 24px -4px rgba(52, 211, 153, 0.35);
+  }
+
+  /* Animated skeleton shimmer */
+  .skeleton {
+    @apply animate-pulse bg-slate-800 rounded;
+  }
+}
